@@ -18,7 +18,7 @@ namespace GridCommon
                 double minWay = result.MinWay;
                 List<string> tracksWithMinWay = new List<string>();
                 StringBuilder sb = new StringBuilder();
-                sb.AppendLine($"Клиент посчитал: Пути с минимальной стоимостью {minWay}:");
+                sb.AppendLine($"Пути с минимальной стоимостью {minWay}:");
                 foreach (var track in result.AllTracks)
                 {
                     if (result.MinWay == minWay)

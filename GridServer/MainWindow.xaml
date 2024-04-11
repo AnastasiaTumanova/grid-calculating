@@ -66,8 +66,8 @@
 
             <StackPanel Visibility="{Binding ResultVisibility}">
                 <TextBlock>Пришел результат</TextBlock>
-                <TextBlock Text="{Binding ResultText}" Height="auto" Width="auto" ScrollViewer.HorizontalScrollBarVisibility="Hidden"
-         ScrollViewer.VerticalScrollBarVisibility="Visible"  ScrollViewer.CanContentScroll="True" TextWrapping="WrapWithOverflow" />
+                <TextBlock Text="{Binding ResultText}" Height ="338" Width="auto" ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+         ScrollViewer.VerticalScrollBarVisibility="Visible"  ScrollViewer.CanContentScroll="True" />
 
 
 
