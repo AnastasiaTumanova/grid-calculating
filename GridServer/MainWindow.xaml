@@ -8,18 +8,25 @@
         Title="Грид система" Height="572" Width="450"
         ResizeMode="NoResize"
         >
-    <Grid Margin="0,0,0,-6"
+    <Grid Height="786" VerticalAlignment="Top"
         >
         <Grid.RowDefinitions>
-            <RowDefinition Height="588*"/>
-            <RowDefinition Height="59*"/>
-            <RowDefinition Height="6*"/>
+            <RowDefinition Height="631*"/>
+            <RowDefinition Height="0*"/>
+            <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
         <StackPanel
-         Margin="10,10,10,35"
+         Margin="10,10,10,234" RenderTransformOrigin="0.5,0.5"
             >
+            <StackPanel.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-0.234"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-1.196"/>
+                </TransformGroup>
+            </StackPanel.RenderTransform>
             <TextBlock>Поиск кратчайшего пути</TextBlock>
-            <TextBlock>Технология: .Net Remoting</TextBlock>
             <StackPanel Visibility="{Binding OpenFileVisibility}">
 
                 <StackPanel Orientation="Horizontal" >
@@ -59,7 +66,11 @@
 
             <StackPanel Visibility="{Binding ResultVisibility}">
                 <TextBlock>Пришел результат</TextBlock>
-                <TextBlock Text="{Binding ResultText}" Height="72"></TextBlock>
+                <TextBlock Text="{Binding ResultText}" Height="auto" Width="auto" ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+         ScrollViewer.VerticalScrollBarVisibility="Visible"  ScrollViewer.CanContentScroll="True" TextWrapping="WrapWithOverflow" />
+
+
+
             </StackPanel>
 
         </StackPanel>

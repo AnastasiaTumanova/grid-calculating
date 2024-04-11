@@ -12,6 +12,7 @@ namespace GridCommon
     /// </summary>
     public class JobResult
     {
+        public List<string> AllTracks { get; set; }
         public string ResultTrack { get; set; }
         public double MinWay { get; set; }
         public int PathLength { get; set; }

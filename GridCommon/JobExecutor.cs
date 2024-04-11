@@ -36,7 +36,6 @@ namespace GridCommon
 
         private void FindAllPaths(int node, int n, int[,] matrix)
         {
-
             visited[node] = true;
             currentPath.Add(node);
 
@@ -61,35 +60,37 @@ namespace GridCommon
 
         public JobResult Execute(Job job)
         {
-            Dictionary<string, double> dic = new Dictionary<string, double>();
-
-            string result = "";
-            double minput = double.MaxValue;
+            JobResult jobResult = new JobResult();
+            jobResult.AllTracks = new List<string>();
             int n = job.lenPath;
             List<List<int>> allPaths = Algorithm(n, job.Matrix);
+
+            double minput = double.MaxValue;
 
             foreach (var path in allPaths)
             {
                 double miput = 0;
+                string result = "";
                 for (int i = 1; i < path.Count; i++)
                 {
                     miput += job.Matrix[path[i - 1], path[i]];
+                    result += path[i - 1].ToString();
                 }
+                result += path.Last().ToString();
+
+                jobResult.AllTracks.Add(result);
+                jobResult.Dict[result] = miput;
+
                 if (minput > miput)
                 {
                     minput = miput;
-                    result = string.Join("", path);
+                    jobResult.ResultTrack = result;
                 }
             }
 
-            dic.Add(result, minput);
+            jobResult.MinWay = minput;
 
-            return new JobResult()
-            {
-                ResultTrack = result,
-                Dict = dic,
-                MinWay = minput
-            };
+            return jobResult;
         }
     }
 }
