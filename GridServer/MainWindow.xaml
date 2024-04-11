@@ -1,0 +1,68 @@
+﻿<Window x:Class="GridServer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GridServer"
+        mc:Ignorable="d"
+        Title="Грид система" Height="572" Width="450"
+        ResizeMode="NoResize"
+        >
+    <Grid Margin="0,0,0,-6"
+        >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="588*"/>
+            <RowDefinition Height="59*"/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+        <StackPanel
+         Margin="10,10,10,35"
+            >
+            <TextBlock>Поиск кратчайшего пути</TextBlock>
+            <TextBlock>Технология: .Net Remoting</TextBlock>
+            <StackPanel Visibility="{Binding OpenFileVisibility}">
+
+                <StackPanel Orientation="Horizontal" >
+                    <TextBlock Margin="10">Файл матрицы:</TextBlock>
+                    <TextBlock Margin="10" Text="{Binding SelectedFileText}"></TextBlock>
+                    <Button Name="btnOpenFile" Margin="4" Padding="4" Width="128" Command="{Binding OpenFileBtnCommand}">Открыть</Button>
+
+                </StackPanel>
+                <Label>Введите N (Длина маршрута)</Label>
+                <TextBox Text="{Binding PathLength, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
+                <Button IsEnabled="{Binding IsFileSelected}" Name="btnStart" Margin="10" Command="{Binding StartCommand}" Padding="10">Запуск</Button>
+
+            </StackPanel>
+
+            <StackPanel Visibility="{Binding LoadingIndicatorVisibility}">
+                <TextBlock>Статус: В работе</TextBlock>
+                <Image Source="component/settings.png" x:Name="rect1" RenderTransformOrigin="0.5, 0.5" Height="220">
+                    <Image.RenderTransform>
+                        <!-- giving the transform a name tells the framework not to freeze it -->
+                        <RotateTransform x:Name="noFreeze" />
+                    </Image.RenderTransform>
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="Loaded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+            Storyboard.TargetProperty="(Image.RenderTransform).(RotateTransform.Angle)"
+            To="360" Duration="0:0:2" RepeatBehavior="Forever" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+
+            </StackPanel>
+
+            <StackPanel Visibility="{Binding ResultVisibility}">
+                <TextBlock>Пришел результат</TextBlock>
+                <TextBlock Text="{Binding ResultText}" Height="72"></TextBlock>
+            </StackPanel>
+
+        </StackPanel>
+
+    </Grid>
+</Window>
