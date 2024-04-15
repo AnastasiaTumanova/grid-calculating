@@ -10,16 +10,15 @@ namespace GridCommon
 {
     public class JobExecutor
     {
-
-        static bool[] visited;
-        List<int> currentPath = new List<int>();
-        List<List<int>> paths = new List<List<int>>();
         /// <summary>
         /// Выполняет работу
         /// </summary>
         /// <param name="job"></param>
         /// <returns></returns>
-
+        /// 
+        static bool[] visited;
+        List<int> currentPath = new List<int>();
+        List<List<int>> paths = new List<List<int>>();
         public List<List<int>> Algorithm(int n, int[,] matrix)
         {
             visited = new bool[n];
@@ -31,9 +30,7 @@ namespace GridCommon
                 FindAllPaths(i, n, matrix);
             }
             return paths;
-
         }
-
         private void FindAllPaths(int node, int n, int[,] matrix)
         {
             visited[node] = true;

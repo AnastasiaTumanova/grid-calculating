@@ -9,7 +9,6 @@ namespace GridCommon
     public class JobsComparer
     {
         static Action<string> callback;
-
         public static void AddJobResult(JobResult result)
         {
 

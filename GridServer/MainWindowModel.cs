@@ -126,20 +126,30 @@ namespace GridServer
         {
             try
             {
-                if (PathLength == 0)
-                {
-                    MessageBox.Show("Укажите длину пути", "Предупреждение");
-                    return;
-                }
-               
-                LoadingIndicatorVisibility = Visibility.Visible;
-                OpenFileVisibility = Visibility.Collapsed;
-
                 var parser = new SquareMatrixParser();
                 var matrix = parser.ParseStream(System.IO.File.OpenRead(selctedFilePath));
-               
-                var server = new Server();
-                server.Start(matrix, PathLength, OnResult);
+                if (PathLength < 3)
+                {
+
+                    MessageBox.Show("Длина пути некорректна", "Предупреждение");
+                    return;
+                }
+                else
+                {
+                    if (PathLength > matrix.GetLength(0))
+                    {
+
+                        MessageBox.Show("Длина пути некорректна", "Предупреждение");
+                        return;
+                    }
+                    else
+                    {
+                        LoadingIndicatorVisibility = Visibility.Visible;
+                        OpenFileVisibility = Visibility.Collapsed;
+                        var server = new Server();
+                        server.Start(matrix, PathLength, OnResult);
+                    }
+                }
             }
             catch (Exception e)
             {

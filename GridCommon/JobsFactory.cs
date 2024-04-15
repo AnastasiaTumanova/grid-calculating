@@ -7,14 +7,15 @@ using System.Threading.Tasks;
 namespace GridCommon
 {
 
-    /// <summary>
-    /// Класс раздающий задания
-    /// </summary>
+
+    /// Класс, раздающий задания
+
     public class JobsFactory
     {
-        //при 10 городах = время подсчета всех переборов значительно увеличилось = 10-12 секунд, т.е от 10000 до 12000 ms 
-        // при 9 городах = 1584,76 ms = 01.5847627 секунд
-       
+        // при 10 городах и длине пути равной 9 = время подсчета всех переборов значительно увеличилось = 15-20 секунд
+        // при 10 городах  и длине пути равной 8 = 09.9669410 секунд
+        // при 9 городах и длине пути равной 8 = примерно 1 секунда
+
         static int[,] jobs;
         static int[] currI;
         static int headSize;
@@ -81,7 +82,7 @@ namespace GridCommon
                 var j = new Job()
                 {
                     Matrix = jobs,
-                    Head = head,
+                   Head = head,
                     lenPath = citiesCount
                 };       
                 return j;

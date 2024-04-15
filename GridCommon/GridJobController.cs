@@ -19,7 +19,6 @@ namespace GridCommon
         public void SetResult(Job job, JobResult result)
         {
             JobsComparer.AddJobResult(result);
-            Console.WriteLine($"Клиент посчитал: Путь - {0} Расстояние - {1}", result.ResultTrack,  result.MinWay);
 
         }
     }

@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 namespace GridCommon
 {
     [System.Serializable]
-    /// <summary>
-    /// Модель описания результата работы
-    /// </summary>
+
     public class JobResult
     {
         public List<string> AllTracks { get; set; }
